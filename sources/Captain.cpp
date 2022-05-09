@@ -27,10 +27,10 @@ namespace coup
     }
     void Captain::someOneBlockme(){
         static int someOneBlockme = 0;
-        int s = this->lastAction.compare("steal");
         int s1 = this->lastAction.compare("stealOne");
-        int s2 = this->lastAction.compare("stealTwo");
         int f = this->lastAction.compare("foreign_aid");
+        int s2 = this->lastAction.compare("stealTwo");
+        int s = this->lastAction.compare("steal");
         someOneBlockme++;
         if (s2 == 0)
         {
@@ -60,12 +60,14 @@ namespace coup
     }
     void Captain::steal(Player &p){
         static int numOfSteal = 0;
+        int turn = 0;
         isMyTurn();
         if (p.money >= 2)
         {   
             numOfSteal++;
             this->money += 2;
             p.money -= 2;
+            turn++;
             this->pFrom = &p;
             endMyTurn("stealTwo");
         }
