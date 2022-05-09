@@ -27,11 +27,12 @@ namespace coup
     }
     void Captain::someOneBlockme(){
         static int someOneBlockme = 0;
-        int s1 = this->lastAction.compare("stealOne");
-        int f = this->lastAction.compare("foreign_aid");
-        int s2 = this->lastAction.compare("stealTwo");
+        static int steal = 0;
         int s = this->lastAction.compare("steal");
-        someOneBlockme++;
+        int s1 = this->lastAction.compare("stealOne");
+        int s2 = this->lastAction.compare("stealTwo");
+        steal = steal + 3;
+        int f = this->lastAction.compare("foreign_aid");
         if (s2 == 0)
         {
             someOneBlockme++;
