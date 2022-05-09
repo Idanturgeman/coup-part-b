@@ -51,20 +51,23 @@ namespace coup{
         const int two = 2; 
         const int six = 6;
         const int one = 1;
+        int ans = 0;
+        int temp = 0;
         
         do
         {
             _turn++;
            this->i = (this->i+1) % this->playersList.size();
         } while (!this->playersList.at(i)->isAlive);
-
+        _turn++;
         if (this->numOfPlayers < two || this->numOfPlayers > six )
         {
             throw runtime_error("too much players");
         }
+        ans++;
         if (gameStart == 0)
         {
-            _turn++;
+            temp++;
             gameStart = 1; 
         }
     }
