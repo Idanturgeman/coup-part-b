@@ -6,28 +6,26 @@ namespace coup{
     class Game;
     class Player
     {   
+      
+    public:
+        Player(Game& game, string name);
+        ~Player();
+        bool isAlive;
+        void foreign_aid();
+        int money;
+        void coup(Player &p);
+        int coins() const;
+        void income();
+        void isMyTurn();
+        string name;
+        void endMyTurn(string last);
+        string lastAction;
+        virtual string role();
+        virtual void someOneBlockme();
+       
     protected:
         Game *game;
-        
-    public:
-        int money;
-        string name;
-        bool isAlive;
-        string lastAction;
-        Player(Game& game, string name);//{
-        //     this->game = game;
-        //     this->name = name;
-        //     this->money = 0;
-        // };
-        void income();
-        void foreign_aid();
-        void coup(Player &p);
-        virtual string role();
-        int coins() const;
-        void isMyTurn();
-        void endMyTurn(string last);
-        virtual void someOneBlockme();
-        ~Player();
+      
     };
     
 }
