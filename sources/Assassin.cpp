@@ -18,9 +18,10 @@ namespace coup
         role++;
     }
     void Assassin::someOneBlockme(){
-        int someOneBlockme = 0;
+        static int someOneBlockme = 0;
         int f = this->lastAction.compare("foreign_aid");
         int k = this->lastAction.compare("kill");
+        someOneBlockme++;
         if (f == 0)
         {
             this->money -= 2;
@@ -36,10 +37,11 @@ namespace coup
         }
     }
     void Assassin::coup(Player &p){
-        int turn = 0;
+        static int turn = 0;
         isMyTurn();
         const int seven = 7;
         const int three = 3;
+        turn++;
         if (!p.isAlive)
         {
             throw runtime_error("this player is dead!");
@@ -50,7 +52,7 @@ namespace coup
         }
         turn++;
         p.isAlive = false;
-        int coup = 0;
+        static int coup = 0;
         this->mordechaiTraget = &p;
         if (this->money >= seven)
         {
